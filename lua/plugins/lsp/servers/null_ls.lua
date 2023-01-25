@@ -35,6 +35,7 @@ _.setup = function(on_attach)
       diagnostics.alex,
       diagnostics.write_good,
       diagnostics.checkmake,
+      diagnostics.eslint_d,
 
       formatting.prettierd.with({
         condition = exclude_root_file({ "rome.json" }),

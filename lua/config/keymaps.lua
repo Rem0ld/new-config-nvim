@@ -14,6 +14,8 @@ local function map(mode, lhs, rhs, opts)
   end
 end
 
+map("n", "s", "<nop>", { desc = "Nothing" })
+map("n", "<leader>fs", "<nop>", { desc = "Nothing" })
 -- better up/down
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -114,10 +116,12 @@ map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Open Quickfix List" })
 map("n", "<leader>uf", require("lazyvim.plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
 map("n", "<leader>us", function() Util.toggle("spell") end, { desc = "Toggle Spelling" })
 map("n", "<leader>uw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
-map("n", "<leader>ul", function() Util.toggle("relativenumber", true) Util.toggle("number") end, { desc = "Toggle Line Numbers" })
+map("n", "<leader>ul", function() Util.toggle("relativenumber", true) Util.toggle("number") end,
+  { desc = "Toggle Line Numbers" })
 map("n", "<leader>ud", Util.toggle_diagnostics, { desc = "Toggle Diagnostics" })
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
-map("n", "<leader>uc", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
+map("n", "<leader>uc", function() Util.toggle("conceallevel", false, { 0, conceallevel }) end,
+  { desc = "Toggle Conceal" })
 
 -- Gitui
 map("n", "<leader>gg", function() Util.float_term({ "gitui" }) end, { desc = "gitui (cwd)" })
@@ -133,23 +137,23 @@ end
 -- floating terminal
 -- map("n", "<leader>ft", function() Util.float_term(nil, { cwd = Util.get_root() }) end, { desc = "Terminal (root dir)" })
 map("n", "<leader>ft", function() Util.float_term() end, { desc = "Terminal (cwd)" })
-map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode"})
+map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 
 -- windows
-map("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
-map("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
-map("n", "<leader>w-", "<C-W>s", { desc = "Split window below" })
-map("n", "<leader>w|", "<C-W>v", { desc = "Split window right" })
-map("n", "<leader>-", "<C-W>s", { desc = "Split window below" })
-map("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
+map("n", "<leader>ww", "<nop>", { desc = "Other window" })
+map("n", "<leader>wd", "<nop>", { desc = "Delete window" })
+map("n", "<leader>w-", "<nop>", { desc = "Split window below" })
+map("n", "<leader>w|", "<nop>", { desc = "Split window right" })
+map("n", "<leader>-", "<nop>", { desc = "Split window below" })
+map("n", "<leader>|", "<nop>", { desc = "Split window right" })
 
 -- tabs
-map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
-map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
-map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
-map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
-map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
-map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+map("n", "<leader><tab>l", "<nop>", { desc = "Last Tab" })
+map("n", "<leader><tab>f", "<nop>", { desc = "First Tab" })
+map("n", "<leader><tab><tab>", "<nop>", { desc = "New Tab" })
+map("n", "<leader><tab>]", "<nop>", { desc = "Next Tab" })
+map("n", "<leader><tab>d", "<nop>", { desc = "Close Tab" })
+map("n", "<leader><tab>[", "<nop>", { desc = "Previous Tab" })
 
 -- Better vertical navigation
 map("n", "<C-d>", "<C-d>zz", { silent = true })

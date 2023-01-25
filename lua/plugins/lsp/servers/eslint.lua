@@ -5,6 +5,7 @@ _.setup = function(on_attach, capabilities)
 
   lspconfig.eslint.setup({
     root_dir = lspconfig.util.root_pattern(".eslintrc", ".eslintrc.js", ".eslintrc.json"),
+    cmd = { "vscode-eslint-language-server", "--stdio" },
     on_attach = function(client, bufnr)
       client.server_capabilities.documentFormattingProvider = true
       on_attach(client, bufnr)
@@ -12,7 +13,7 @@ _.setup = function(on_attach, capabilities)
     capabilities = capabilities,
     settings = {
       format = {
-        enable = false,
+        enable = true,
       },
     },
     handlers = {
